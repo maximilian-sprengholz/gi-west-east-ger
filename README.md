@@ -55,7 +55,7 @@ The following user-written programs have been altered to serve the present purpo
 
 ## License
 
-This project is licensed under the terms of the [MIT License](/LICENSE.md).
+This project is licensed under the terms of the [MIT License](/LICENSE.md). Reproduced content from the published [article](https://doi.org/10.1093/ser/mwaa048) is subject to the copyright noted therein.
 
 ## Citation
 

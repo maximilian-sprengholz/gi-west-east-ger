@@ -29,7 +29,6 @@
  - Only for appendix: estout (by Ben Jann, http://repec.sowi.unibe.ch/stata/estout/index.html)
  
  ...please use the provided repository structure as is and edit the macros below.
- 
 */
 
 version 14
@@ -45,13 +44,13 @@ set seed 1234567
 //     		 MACROS	  	  	   //
 //-----------------------------//
 
-global wd "C:/Users/sprenmax/Seafile/Projects/gi-west-east-ger/" // working directory
+global wd "Z:/path/to/dir" // working directory
 
-global SOEP "L:/Gsoep/Nutzer/Gsoep33/" // annual wide files
-global SOEP_l "L:/Gsoep/Nutzer/Gsoep33/Gsoep33long/" // SOEP long files
-global SOEP_l_reg "L:/Gsoep/Nutzer/Gsoep33/Gsoep33long/regionaldaten/" // SOEP long regional data (restricted access)
+global SOEP "Z:/path/to/dir" // SOEP annual wide files
+global SOEP_l "Z:/path/to/dir" // SOEP long files
+global SOEP_l_reg "Z:/path/to/dir" // SOEP long regional data (restricted access)
 
-global FAST "C:/Users/sprenmax/Seafile/Library/DTA/FAST2010/3_datei/" // FAST income tax data (restricted access)
+global FAST "Z:/path/to/dir" // FAST income tax data (restricted access)
 
 global dir_data "${wd}data/" // generated datasets
 global dir_do "${wd}do/" // do
