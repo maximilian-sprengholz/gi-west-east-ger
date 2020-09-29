@@ -1,0 +1,29 @@
+& \multicolumn{3}{c}{{\textit{West Germany}}} & \multicolumn{2}{c}{{\textit{East Germany}}} \\ \cmidrule(l{1em}){2-4}\cmidrule(l{1em}){5-6} & {\Centerstack{(1)\\1983--1990}} & {\Centerstack{(2)\\1991--2003}} & {\Centerstack{(3)\\2004--2016}} & {\Centerstack{(4)\\1991--2003}} & {\Centerstack{(5)\\2004--2016}}\\ \hline
+\noalign{\smallskip}\textbf{\textit{OLS}} & & & & & \\ wifeEarnsMore in \textit{t--1}&    0.487\sym{***}&    0.457\sym{***}&    0.524\sym{***}&    0.434\sym{***}&    0.518\sym{***}\\
+          &{(}0.038{)}         &{(}0.025{)}         &{(}0.021{)}         &{(}0.026{)}         &{(}0.030{)}         \\
+\hline\noalign{\smallskip}\textbf{\textit{FE}} & & & & & \\ wifeEarnsMore in \textit{t--1}&   -0.113\sym{**} &   -0.041         &   -0.001         &    0.077\sym{*}  &   -0.029         \\
+          &{(}0.041{)}         &{(}0.036{)}         &{(}0.030{)}         &{(}0.031{)}         &{(}0.037{)}         \\
+\hline\noalign{\smallskip}\textbf{\textit{BB}} & & & & & \\ \noalign{\smallskip}\(L_{i,t-1}\)\textit{ strictly exogenous, all lags collapsed} & & & & & \\ \noalign{\smallskip}wifeEarnsMore in \textit{t--1}&    0.220\sym{*}  &   -0.053         &    0.014         &    0.172\sym{**} &   -0.045         \\
+          &{(}0.090{)}         &{(}0.047{)}         &{(}0.046{)}         &{(}0.058{)}         &{(}0.062{)}         \\
+AR(1) p-value&    0.000         &    0.000         &    0.271         &    0.000         &    0.000         \\
+AR(2) p-value&    0.053         &    0.323         &    0.985         &    0.089         &    0.934         \\
+Sargan p-value&    0.000         &    0.002         &    0.000         &    0.005         &    0.005         \\
+Hansen p-value&    0.004         &    0.473         &    0.071         &    0.067         &    0.153         \\
+Instruments  & {38} & {52} & {50} & {50} & {50} \\
+\noalign{\medskip}\(L_{i,t-1}\)\textit{ predetermined, all lags collapsed} & & & & & \\ \noalign{\smallskip}wifeEarnsMore in \textit{t--1}&    0.272\sym{***}&    0.098\sym{*}  &    0.182\sym{***}&    0.307\sym{***}&    0.144\sym{*}  \\
+          &{(}0.081{)}         &{(}0.042{)}         &{(}0.040{)}         &{(}0.056{)}         &{(}0.063{)}         \\
+AR(1) p-value&    0.000         &    0.000         &    0.000         &    0.000         &    0.262         \\
+AR(2) p-value&    0.055         &    0.965         &    0.196         &    0.027         &    0.707         \\
+Sargan p-value&    0.000         &    0.000         &    0.000         &    0.040         &    0.000         \\
+Hansen p-value&    0.030         &    0.444         &    0.247         &    0.121         &    0.121         \\
+Instruments  & {74} & {151} & {140} & {141} & {140} \\
+\noalign{\medskip}\(L_{i,t-1}\)\textit{ endogenous, all lags collapsed} & & & & & \\ \noalign{\smallskip}wifeEarnsMore in \textit{t--1}&    0.088         &   -0.015         &    0.032         &    0.103         &   -0.019         \\
+          &{(}0.186{)}         &{(}0.053{)}         &{(}0.053{)}         &{(}0.084{)}         &{(}0.068{)}         \\
+AR(1) p-value&    0.000         &    0.000         &    0.000         &    0.000         &    0.000         \\
+AR(2) p-value&    0.659         &    0.613         &    0.266         &    0.259         &    0.732         \\
+Sargan p-value&    0.810         &    0.094         &    0.000         &    0.968         &    0.034         \\
+Hansen p-value&    0.549         &    0.512         &    0.896         &    0.463         &    0.774         \\
+Instruments  & {74} & {151} & {140} & {133} & {140} \\
+\hline\noalign{\smallskip}\textbf{\textit{LSDVC}} & & & & & \\ wifeEarnsMore in \textit{t--1}&    0.093\sym{**} &    0.153\sym{***}&    0.200\sym{***}&    0.242\sym{***}&    0.168\sym{***}\\
+          &{(}0.032{)}         &{(}0.020{)}         &{(}0.014{)}         &{(}0.034{)}         &{(}0.038{)}         \\
+\hline \noalign{\smallskip} N (couple-years)  & {4,529} & {10,718} & {14,782} & {4,016} & {3,940} \\ n (couples)  & {1,363} & {2,891} & {3,922} & {973} & {900} \\

@@ -1,0 +1,888 @@
+\documentclass[a4paper,11pt]{scrartcl}
+% no hyphenation
+\usepackage[none]{hyphenat}
+\usepackage{natbib}
+\usepackage[latin1]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\providecommand{\twocite}[4]{\citep[{\citealp[#1]{#2};}][#3]{#4}}
+\usepackage{romannum}
+\usepackage{amsmath}
+\usepackage{graphicx}
+% captions
+\usepackage{caption}
+\captionsetup[table]{
+	labelsep=period,
+	justification=raggedright,
+	format=plain,
+	textfont={footnotesize, it},
+	name=Table,
+	labelfont={footnotesize},
+	skip=0pt,
+	belowskip=-7pt,
+	position=top
+}
+\captionsetup[figure]{
+	labelsep=period,
+	justification=raggedright,
+	format=plain,
+	textfont={scriptsize, sc},
+	name=Figure,
+	labelfont={scriptsize, sc},
+	skip=15pt,
+	belowskip=0pt,
+	position=bottom,
+	width=13cm
+}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+\usepackage{ngerman}
+\usepackage{ dsfont }
+\usepackage{color}
+\definecolor{gray}{gray}{0.60}
+\usepackage[paper=a4paper,left=25mm,right=25mm,top=25mm,bottom=25mm]{geometry}
+\usepackage{fancyhdr}
+\usepackage[nolist]{acronym}%Abkürzungen
+\usepackage{pdflscape}
+\usepackage{tcolorbox} % für boxen um hypothesen
+\usepackage{afterpage}
+\usepackage{capt-of}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{ marvosym }
+\usepackage{booktabs} % tabout
+\usepackage{tabularx} % tabout
+\usepackage{subfig} % Mehrere Abbildungen nebeneinander
+\usepackage[outdir=./]{epstopdf}
+\tcbuselibrary{theorems}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{setspace}
+% toc
+\usepackage[toc,page]{appendix}
+% tabout/tables
+\usepackage{booktabs} % tabout
+\usepackage{tabularx} % tabout
+\usepackage{siunitx} % table cell content alignment decimal point
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} % Signifikanz-Sternchen
+\usepackage[usestackEOL]{stackengine} % table cell with line breaks
+\usepackage{multirow}
+\addtokomafont{section}{\sffamily} %Kapitel
+\addtokomafont{sectioning}{\sffamily} %Titelzeilen
+\deffootnote{1em}{1em}{\textsuperscript{\thefootnotemark\ }}
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+%\usepackage[subfigure]{tocloft}
+\usepackage[subfigure]{tocloft}
+\captionsetup[subfigure]{position=top}
+\setlength{\cftfignumwidth}{3em}
+\setlength{\cfttabnumwidth}{3em}
+\usepackage[hidelinks]{hyperref}
+
+\begin{document}
+
+% Pagination
+\clearpage
+\setstretch{1.25}
+\pagestyle{plain}
+%\cfoot{\thepage}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% Titlepage
+\begin{titlepage}
+	\selectlanguage{english}
+
+	\title{\scshape{Appendix}}
+	\subtitle{\sffamily{Gender identity and wives' labor market outcomes in West and East Germany between 1983 and 2016}}
+	\author{Maximilian Sprengholz\thanks{Humboldt-Universiät zu Berlin, Institut für Sozialwissenschaften; DIW Berlin until 31st January 2019; \href{mailto:maximilian.sprengholz@hu-berlin.de}{maximilian.sprengholz@hu-berlin.de}} \and Anna Wieber\thanks{Deutsche Rentenversicherung Bund; DIW Berlin until 31st December 2014; \href{mailto:Anna.Wieber@drv-bund.de}{Anna.Wieber@drv-bund.de}} \and Elke Holst\thanks{DIW Berlin; \href{mailto:eholst@diw.de}{eholst@diw.de}}}
+
+	\date{\today}
+
+	\maketitle
+
+	\centering
+	Supplementary material to: \href{https://doi.org/10.1093/ser/mwaa048}{https://doi.org/10.1093/ser/mwaa048}.
+\end{titlepage}
+
+% Appendix
+\pagebreak
+\begin{appendix}
+	% reset table counter and name A1, A2, ...
+	\renewcommand*\thetable{\Alph{section}.\arabic{table}}
+	\renewcommand*\thefigure{\Alph{section}.\arabic{figure}}
+
+	% De-Rounding
+	\section{De-Rounding}\label{derounding}
+	\setcounter{table}{0}
+	\setcounter{figure}{0}
+
+	In the SOEP data used here, there is a substantial fraction of couples with exactly the same income. By implication of the McCrary discontinuity test with the cut-off set at the point of equal earnings, any heaping in the data at a relative income of exactly 0.5 would result in an overestimated discontinuity. Additionally, the dummy $wifeEarnsMore$ used as main explanatory variable in the fixed effects regressions would also be affected by such heaping, as we cannot identify which spouse actually earns more, given that some of the calculated income shares do not resemble the true values.
+
+	After accounting for possible heaping effects by imputed or top-coded values, co-working or self employment of spouses, we presume the remaining spike of 0.6\% to be a result of rounding behavior by survey respondents. In the SOEP, each respondent is surveyed individually, therefore the spike cannot originate in rounding or misreporting by the head of the household answering for other household members. Even so, most individually reported income data is expected to be rounded to some extent \citep{drechsler2015beat, zinn2016statistical}. Thus, we adjust the income share distribution according to rounding probabilities in administrative income tax data (FAST 2010, doi: 10.21242/73111.2010.00.00.3.1.0). That is, we de-round rounded income values for the fraction of couples in the SOEP exceeding the respective fraction in the income tax data.
+
+	If the couple is selected for de-rounding, a random draw from a normal distribution $N (0; R_k /3)$ is added to the individual income values, where $R_k$  determines half the range of the rounding interval $R = k/2$ of integer multiples of $k = [50; 100; 500; 1000; 5000; 10000]$. To ensure that 99 percent of the de-rounded income values $I_1$ lie within $[I_0 - R_k ; I_0 + R_k ]$, where $I_0$ is the observed income and $k$ the maximum possible $k$ that $I_0$ is divisible by, the standard deviation is set to $\sigma = R_k /3$. One percent of drawn values are allowed to randomly exceed the interval. For example, an income value of 25,000 would be de-rounded by adding a random draw from $N(0; 2500/3)$. Since heaping probabilities are unknown with regard to income (Drechsler and Kiesl, 2015), this approach is an approximation based on the assumptions that (1) respondent's propensity to round is likely to increase with proximity to a heaping point \citep{zinn2016statistical} and (2) the actual incidence of rounded income values in the tax data is genuine. Relative frequencies are calculated based on annual income from dependent employment reported in the official tax data for employees by income brackets $[1; 10,000],$ $(10,000; 20,000],$ $(20,000; 35,000],$ $(35,000; 60,000],$ $(60,000; 999,999]$, sample region (East/West) and sex to additionally account for differences in rounding behavior depending on the place of residence, sex and the absolute amount of income. However, the estimation may be biased due to differences in rounding behavior over time (tax data is used from 2010 only).
+
+	By de-rounding, the share of equal earning partners in the sample is substantially reduced from 0.6 percent to 0.2 percent.
+
+	% Summary statistics
+	\clearpage
+	\section{Panel summary statistics}\label{sumstats}
+	\setcounter{table}{0}
+	\setcounter{figure}{0}
+
+		\begin{table}[!htbp]
+		\begin{center}
+			\begin{scriptsize}
+				\captionof{table}{Panel summary statistics West Germany 1983--1990 \label{xtsumW1984}}
+				\sisetup{
+					table-text-alignment=right,
+					table-number-alignment=right,
+					table-unit-alignment=right,
+					table-figures-integer = 1,
+					table-figures-decimal=2,
+					input-decimal-markers =	.	,
+					input-symbols = , ,
+					table-align-text-post = false,
+					%table-space-text-post = \sym{***},
+					%table-space-text-post = \sym{\dag},
+					%table-space-text-pre = {(},
+					%table-space-text-post = {)}
+				}
+				\noindent
+				\strutlongstacks{T}
+				{\renewcommand{\arraystretch}{1.0}
+					\begin{tabularx} {\textwidth} {@{} X
+							S[table-column-width = 1.1cm]
+							S[table-column-width = 1.1cm, table-figures-decimal=2]
+							S[table-column-width = 1.1cm, table-figures-decimal=2]
+							*2{S[table-column-width = 1.3cm, table-figures-decimal=2]}
+							*2{S[table-column-width = 0.9cm, table-figures-decimal=0, group-separator={,},group-minimum-digits={3},output-decimal-marker={.}]}
+							S[table-column-width = 0.7cm, table-figures-decimal=2]
+							@{}}
+						\hline\noalign{\smallskip}\noalign{\smallskip}
+						\input{../tables/xt_sum_wc_split_West_1.tex}
+						\noalign{\smallskip}\hline \noalign{\smallskip} \noalign{\smallskip}
+						\input{../tables/xt_sum_ac1_split_West_1.tex}
+						\noalign{\smallskip}\hline \noalign{\smallskip} \noalign{\smallskip}
+						\input{../tables/xt_sum_ac2_split_West_1.tex}
+						\noalign{\smallskip}\hline
+					\end{tabularx}
+				}
+				\captionsetup{
+					justification=justified,
+					textfont={footnotesize, normalfont},
+				}
+				\caption*{\scriptsize{Note: `Working couples' refers to the base specification outlined in the data section. `All couples' refers to all married couples between age 25 and 64 in the data. Income related statistics are based on (once) de-rounded income values. Income reported in Euro. We merged retrospective annual information and current information so that it fits the stated period. Naturally, because of availability differences between periods, the sample sizes for annual and non-annual information might not be the same.}}
+			\end{scriptsize}
+			\normalsize
+		\end{center}
+	\end{table}
+
+
+	\begin{table}[!htbp]
+		\begin{center}
+			\begin{scriptsize}
+				\captionof{table}{Panel summary statistics West Germany 1991--2003 \label{xtsumW1997}}
+				\sisetup{
+					table-text-alignment=right,
+					table-number-alignment=right,
+					table-unit-alignment=right,
+					table-figures-integer = 1,
+					table-figures-decimal=2,
+					input-decimal-markers =	.	,
+					input-symbols = , ,
+					table-align-text-post = false,
+					%table-space-text-post = \sym{***},
+					%table-space-text-post = \sym{\dag},
+					%table-space-text-pre = {(},
+					%table-space-text-post = {)}
+				}
+				\noindent
+				\strutlongstacks{T}
+				{\renewcommand{\arraystretch}{1.1}
+					\begin{tabularx} {\textwidth} {@{} X
+							S[table-column-width = 1.1cm]
+							S[table-column-width = 1.1cm, table-figures-decimal=2]
+							S[table-column-width = 1.1cm, table-figures-decimal=2]
+							*2{S[table-column-width = 1.3cm, table-figures-decimal=2]}
+							*2{S[table-column-width = 0.9cm, table-figures-decimal=0, group-separator={,},group-minimum-digits={3},output-decimal-marker={.}]}
+							S[table-column-width = 0.7cm, table-figures-decimal=2]
+							@{}}
+						\hline\noalign{\smallskip}\noalign{\smallskip}
+						\input{../tables/xt_sum_wc_split_West_2.tex}
+						\noalign{\smallskip}\hline \noalign{\smallskip} \noalign{\smallskip}
+						\input{../tables/xt_sum_ac1_split_West_2.tex}
+						\noalign{\smallskip}\hline \noalign{\smallskip} \noalign{\smallskip}
+						\input{../tables/xt_sum_ac2_split_West_2.tex}
+						\noalign{\smallskip}\hline
+					\end{tabularx}
+				}
+				\captionsetup{
+					justification=justified,
+					textfont={footnotesize, normalfont},
+				}
+				\caption*{\scriptsize{Note: `Working couples' refers to the base specification outlined in the data section. `All couples' refers to all married couples between age 25 and 64 in the data. Income related statistics are based on (once) de-rounded income values. Income reported in Euro. We merged retrospective annual information and current information so that it fits the stated period. Naturally, because of availability differences between periods, the sample sizes for annual and non-annual information might not be the same.}}
+			\end{scriptsize}
+			\normalsize
+		\end{center}
+	\end{table}
+
+	\begin{table}[!htbp]
+		\begin{center}
+			\begin{scriptsize}
+				\captionof{table}{Panel summary statistics West Germany 2004--2016 \label{xtsumW2007}}
+				\sisetup{
+					table-text-alignment=right,
+					table-number-alignment=right,
+					table-unit-alignment=right,
+					table-figures-integer = 1,
+					table-figures-decimal=2,
+					input-decimal-markers =	.	,
+					input-symbols = , ,
+					table-align-text-post = false,
+					%table-space-text-post = \sym{***},
+					%table-space-text-post = \sym{\dag},
+					%table-space-text-pre = {(},
+					%table-space-text-post = {)}
+				}
+				\noindent
+				\strutlongstacks{T}
+				{\renewcommand{\arraystretch}{1.1}
+					\begin{tabularx} {\textwidth} {@{} X
+							S[table-column-width = 1.1cm]
+							S[table-column-width = 1.1cm, table-figures-decimal=2]
+							S[table-column-width = 1.1cm, table-figures-decimal=2]
+							*2{S[table-column-width = 1.3cm, table-figures-decimal=2]}
+							*2{S[table-column-width = 0.9cm, table-figures-decimal=0, group-separator={,},group-minimum-digits={3},output-decimal-marker={.}]}
+							S[table-column-width = 0.7cm, table-figures-decimal=2]
+							@{}}
+						\hline\noalign{\smallskip}\noalign{\smallskip}
+						\input{../tables/xt_sum_wc_split_West_3.tex}
+						\noalign{\smallskip}\hline \noalign{\smallskip} \noalign{\smallskip}
+						\input{../tables/xt_sum_ac1_split_West_3.tex}
+						\noalign{\smallskip}\hline \noalign{\smallskip} \noalign{\smallskip}
+						\input{../tables/xt_sum_ac2_split_West_3.tex}
+						\noalign{\smallskip}\hline
+					\end{tabularx}
+				}
+				\captionsetup{
+					justification=justified,
+					textfont={footnotesize, normalfont},
+				}
+				\caption*{\scriptsize{Note: `Working couples' refers to the base specification outlined in the data section. `All couples' refers to all married couples between age 25 and 64 in the data. Income related statistics are based on (once) de-rounded income values. Income reported in Euro. We merged retrospective annual information and current information so that it fits the stated period. Naturally, because of availability differences between periods, the sample sizes for annual and non-annual information might not be the same.}}
+			\end{scriptsize}
+			\normalsize
+		\end{center}
+	\end{table}
+
+	\begin{table}[!htbp]
+		\begin{center}
+			\begin{scriptsize}
+				\captionof{table}{Panel summary statistics East Germany 1991--2003 \label{xtsumE1997}}
+				\sisetup{
+					table-text-alignment=right,
+					table-number-alignment=right,
+					table-unit-alignment=right,
+					table-figures-integer = 1,
+					table-figures-decimal=2,
+					input-decimal-markers =	.	,
+					input-symbols = , ,
+					table-align-text-post = false,
+					%table-space-text-post = \sym{***},
+					%table-space-text-post = \sym{\dag},
+					%table-space-text-pre = {(},
+					%table-space-text-post = {)}
+				}
+				\noindent
+				\strutlongstacks{T}
+				{\renewcommand{\arraystretch}{1.1}
+					\begin{tabularx} {\textwidth} {@{} X
+							S[table-column-width = 1.1cm]
+							S[table-column-width = 1.1cm, table-figures-decimal=2]
+							S[table-column-width = 1.1cm, table-figures-decimal=2]
+							*2{S[table-column-width = 1.3cm, table-figures-decimal=2]}
+							*2{S[table-column-width = 0.9cm, table-figures-decimal=0, group-separator={,},group-minimum-digits={3},output-decimal-marker={.}]}
+							S[table-column-width = 0.7cm, table-figures-decimal=2]
+							@{}}
+						\hline\noalign{\smallskip}\noalign{\smallskip}
+						\input{../tables/xt_sum_wc_split_East_2.tex}
+						\noalign{\smallskip}\hline \noalign{\smallskip} \noalign{\smallskip}
+						\input{../tables/xt_sum_ac1_split_East_2.tex}
+						\noalign{\smallskip}\hline \noalign{\smallskip} \noalign{\smallskip}
+						\input{../tables/xt_sum_ac2_split_East_2.tex}
+						\noalign{\smallskip}\hline
+					\end{tabularx}
+				}
+				\captionsetup{
+					justification=justified,
+					textfont={footnotesize, normalfont},
+				}
+				\caption*{\scriptsize{Note: `Working couples' refers to the base specification outlined in the data section. `All couples' refers to all married couples between age 25 and 64 in the data. Income related statistics are based on (once) de-rounded income values. Income reported in Euro. We merged retrospective annual information and current information so that it fits the stated period. Naturally, because of availability differences between periods, the sample sizes for annual and non-annual information might not be the same.}}
+			\end{scriptsize}
+			\normalsize
+		\end{center}
+	\end{table}
+
+	\begin{table}[!htbp]
+		\begin{center}
+			\begin{scriptsize}
+				\captionof{table}{Panel summary statistics East Germany 2004--2016 \label{xtsumE2007}}
+				\sisetup{
+					table-text-alignment=right,
+					table-number-alignment=right,
+					table-unit-alignment=right,
+					table-figures-integer = 1,
+					table-figures-decimal=2,
+					input-decimal-markers =	.	,
+					input-symbols = , ,
+					table-align-text-post = false,
+					%table-space-text-post = \sym{***},
+					%table-space-text-post = \sym{\dag},
+					%table-space-text-pre = {(},
+					%table-space-text-post = {)}
+				}
+				\noindent
+				\strutlongstacks{T}
+				{\renewcommand{\arraystretch}{1.1}
+					\begin{tabularx} {\textwidth} {@{} X
+							S[table-column-width = 1.1cm]
+							S[table-column-width = 1.1cm, table-figures-decimal=2]
+							S[table-column-width = 1.1cm, table-figures-decimal=2]
+							*2{S[table-column-width = 1.3cm, table-figures-decimal=2]}
+							*2{S[table-column-width = 0.9cm, table-figures-decimal=0, group-separator={,},group-minimum-digits={3},output-decimal-marker={.}]}
+							S[table-column-width = 0.7cm, table-figures-decimal=2]
+							@{}}
+						\hline\noalign{\smallskip}\noalign{\smallskip}
+						\input{../tables/xt_sum_wc_split_East_3.tex}
+						\noalign{\smallskip}\hline \noalign{\smallskip} \noalign{\smallskip}
+						\input{../tables/xt_sum_ac1_split_East_3.tex}
+						\noalign{\smallskip}\hline \noalign{\smallskip} \noalign{\smallskip}
+						\input{../tables/xt_sum_ac2_split_East_3.tex}
+						\noalign{\smallskip}\hline
+					\end{tabularx}
+				}
+				\captionsetup{
+					justification=justified,
+					textfont={footnotesize, normalfont},
+				}
+				\caption*{\scriptsize{Note: `Working couples' refers to the base specification outlined in the data section. `All couples' refers to all married couples between age 25 and 64 in the data. Income related statistics are based on (once) de-rounded income values. Income reported in Euro. We merged retrospective annual information and current information so that it fits the stated period. Naturally, because of availability differences between periods, the sample sizes for annual and non-annual information might not be the same.}}
+			\end{scriptsize}
+			\normalsize
+		\end{center}
+	\end{table}
+
+
+
+	\clearpage
+	% Robustness I
+	\section{Robustness: Discontinuity Estimations}\label{rdcd}
+	\renewcommand*\thetable{\Alph{section}.\arabic{subsection}.\arabic{table}}
+	\renewcommand*\thefigure{\Alph{section}.\arabic{subsection}.\arabic{figure}}
+
+	% Table command
+	\newcommand{\dcdtable}[3]{
+		\begin{table}[H]
+			\begin{center}
+				\begin{scriptsize}
+					\vspace*{3mm}
+					\captionof{table}{#1}
+					\sisetup{
+						table-column-width = 0.6cm,
+						table-text-alignment=center,
+						table-number-alignment=center,
+						table-unit-alignment=center,
+						input-ignore={,},
+						input-decimal-markers={. ,},
+						input-symbols = . ,
+						group-separator={,},
+						group-minimum-digits=3,
+						table-align-text-post = false
+					}
+					\noindent
+					\strutlongstacks{T}
+					{\renewcommand{\arraystretch}{1.3}
+						\begin{tabularx} {\textwidth} {@{} X
+								S[table-column-width = 1.1cm, table-format=1.2]
+								S[table-column-width = 0.7cm, table-format=1.2]
+								S[table-column-width = 0.8cm, table-format=2.2]
+								S[table-column-width = 0.8cm, table-format=4.0, round-mode=places,round-precision=0]
+								S[table-column-width = 0.9cm, table-format=1.2]
+								S[table-column-width = 0.6cm, table-format=1.2]
+								S[table-column-width = 0.8cm, table-format=2.2]
+								S[table-column-width = 0.8cm, table-format=4.0, round-mode=places,round-precision=0 ]
+								S[table-column-width = 0.9cm, table-format=1.2]
+								S[table-column-width = 0.7cm, table-format=1.2]
+								@{}}
+							\midrule
+							\input{../tables/#2.tex}
+							\midrule
+						\end{tabularx}
+					}
+					\captionsetup{
+						justification=justified,
+						textfont={footnotesize, normalfont},
+					}
+					\caption*{\scriptsize{\dcdnoteA\,#3\,\dcdnoteB}}
+				\end{scriptsize}
+				\normalsize
+			\end{center}
+		\end{table}
+	}
+
+	% Note commands
+	\newcommand{\dcdnoteA}{Note: Discontinuity estimated for the distribution of the wife's share of household income using a McCrary Test \citeyear{mccrary2008manipulation}. Restricted to married couples where spouses are between age 25 and 64, where wife and husband have positive annual income, worked at least one month, and are not in education, vocational training, civil service or parental leave, are not self-employed, and do not receive unemployment benefits or pensions in year t$-1$.}
+
+	\newcommand{\samplenote}{}
+
+	\newcommand{\specnote}{Cut-off at 0.50001, bin size 0.05, optimal (automatic) bandwidth.}
+
+	\newcommand{\dcdnoteB}{Averaged over 100 simulation runs based on procedures described in the data section. As annual income is calculated based on answers by survey respondents in the subsequent year, income related statistics for the period 2004-2016 are based on annual incomes between 2004 and 2015. Significance of differences based on two-tailed t-test; *** p$<$0.001, ** p$<$0.01, * p$<$0.05, \dag\, p$<$0.1}
+
+	\subsection{Main model}
+	\setcounter{table}{0}
+	\setcounter{figure}{0}
+
+	\renewcommand{\samplenote}{}
+
+	\dcdtable{Density discontinuity estimates}%
+	{dcd_wis_pc1_random_codot50001_bs05_all_dspike}%
+	{\samplenote\,\specnote}
+
+	\subsection{Different samples}
+	\setcounter{table}{0}
+	\setcounter{figure}{0}
+
+	% Including cohabiting couples
+
+		\renewcommand{\dcdnoteA}{Note: Discontinuity estimated for the distribution of the woman's share of household income using a McCrary Test (\citeyear{mccrary2008manipulation}). Restricted to married or cohabiting couples where partners in year t$-1$ are between age 25 and 64, have positive annual income, worked at least one month, and are not in education, vocational training, civil service or parental leave, are not self-employed, and do not receive unemployment benefits or pensions.}
+
+		\renewcommand{\samplenote}{A sample including cohabiting couples introduces some uncertainty in the de-rounding procedure (see section \ref{derounding}) as target values are based on tax data which only applies for married couples.}
+
+		\dcdtable{Density discontinuity estimates\textemdash Including cohabiting couples}%
+		{dcd_wis_pc1_random_codot50001_bs05_allcohab_dspike}%
+		{\samplenote\,\specnote}
+
+
+	% Only individuals who did not move between East and West since 1989
+
+		\renewcommand{\dcdnoteA}{Note: Discontinuity estimated for the distribution of the wife's share of household income using a McCrary Test \citeyear{mccrary2008manipulation}. Restricted to married couples where spouses in year t$-1$ are between age 25 and 64, where wife and husband have positive annual income, worked at least one month, and are not in education, vocational training, civil service or parental leave, are not self-employed, and do not receive unemployment benefits or pensions.}
+
+		\renewcommand{\samplenote}{Additionally restricted to individuals whose birth region is the same as the sample region (East/West).}
+
+		\dcdtable{Density discontinuity estimates\textemdash Birth region is sample region}%
+		{dcd_wis_pc1_random_codot50001_bs05_nomov_dspike}%
+		{\samplenote\,\specnote}
+
+	% No deletion of excess spike
+		\renewcommand{\samplenote}{}
+
+		\renewcommand{\specnote}{Cut-off at 0.50001, bin size 0.05, optimal (automatic) bandwidth. No deletion of excess spike of equal earning couples (see data section).}
+
+		\dcdtable{Density discontinuity estimates\textemdash No deletion of excess spike of equal earning couples}%
+		{dcd_wis_pc1_random_codot50001_bs05_all}%
+		{\samplenote\,\specnote}
+
+	\clearpage
+	\subsection{Different specifications}
+	\setcounter{table}{0}
+	\setcounter{figure}{0}
+
+	\renewcommand{\samplenote}{}
+
+	% Binsize 0.01
+
+		\renewcommand{\specnote}{Cut-off at 0.50001, bin size 0.01, optimal (automatic) bandwidth.}
+
+		\dcdtable{Density discontinuity estimates\textemdash Binsize 0.01}%
+		{dcd_wis_pc1_random_codot50001_bs01_all_dspike}%
+		{\samplenote\,\specnote}
+
+		%\dcdtable{Density discontinuity estimates\textemdash Binsize 0.01 nosel}%
+		%{dcd_wis_pc1_nosel_codot50001_bs01_all_dspike}%
+		%{\samplenote\,\specnote}
+
+	% Binsize 0.02
+
+		\renewcommand{\specnote}{Cut-off at 0.50001, bin size 0.02, optimal (automatic) bandwidth.}
+
+		\dcdtable{Density discontinuity estimates\textemdash Binsize 0.02}%
+		{dcd_wis_pc1_random_codot50001_bs02_all_dspike}%
+		{\samplenote\,\specnote}
+
+	% Person-year observation: Median year
+
+		\renewcommand{\specnote}{Selection of income of the median year the couple is in the sample. Cut-off at 0.50001, bin size 0.05, optimal (automatic) bandwidth.}
+
+		\dcdtable{Density discontinuity estimates\textemdash Median couple-year used}%
+		{dcd_wis_pc1_median_codot50001_bs05_all_dspike}%
+		{\samplenote\,\specnote}
+
+	%
+	%
+	%
+	\clearpage
+	% Robustness II
+	\section{Robustness: Panel regressions}\label{rxtfe}
+
+	% Table command
+	\newcommand{\xtfetable}[3]{
+		\begin{table}[H]
+			\begin{center}
+				\begin{scriptsize}
+					\vspace*{3mm}
+					\captionof{table}{#1}
+					\sisetup{
+						table-column-width = 1.75cm,
+						table-text-alignment=center,
+						table-number-alignment=center,
+						table-unit-alignment=center,
+						table-figures-integer = 1,
+						table-figures-decimal=3,
+						input-decimal-markers =	.	,
+						input-symbols = , ,
+						table-align-text-post = false,
+						group-separator={,},
+						group-minimum-digits={3},
+						output-decimal-marker={.},
+						table-space-text-post = \sym{***},
+						table-space-text-post = \sym{\dag},
+						table-space-text-pre = {(},
+						table-space-text-post = {)}
+					}
+					\noindent
+					\strutlongstacks{T}
+					{\renewcommand{\arraystretch}{1.3}
+						\begin{tabularx} {\textwidth} {@{} X S[table-align-text-post=false] S S S S S S @{}}
+							\midrule
+							\input{../tables/#2.tex}
+							\midrule
+						\end{tabularx}
+					}
+					\captionsetup{
+						justification=justified,
+						textfont={footnotesize, normalfont},
+					}
+					\caption*{\scriptsize{\xtfenoteA\,#3\,\xtfenoteB}}
+				\end{scriptsize}
+				\normalsize
+			\end{center}
+		\end{table}
+	}
+
+	% Note commands
+	\newcommand{\xtfenoteA}{Notes: Unweighted regressions with couple fixed effects. $wifeEarnsMore$ is a dummy denoting if the wife earned more than her husband in a given year. Restricted to married couples where spouses are between age 25 and 64, where wife and husband have positive annual income, worked at least one month, and are not in education, vocational training, civil service or parental leave, are not self-employed, and do not receive unemployment benefits or pensions in year t$-1$.}
+
+	\renewcommand{\samplenote}{}
+
+	\renewcommand{\specnote}{}
+
+	\newcommand{\xtfenoteB}{All models include dummies for age groups of 5 years for both spouses, dummy variables for the age of the youngest child in the household, the district level unemployment rate at the month of the interview, and dummy variables for the survey year -- all at t. Averaged over 25 simulation runs based on procedures described in the data section. Standard errors clustered on couple level in parentheses; *** p$<$0.001, ** p$<$0.01, * p$<$0.05, \dag\, p$<$0.1}
+
+	\subsection{Main model}\label{mainspec}
+	\setcounter{table}{0}
+	\setcounter{figure}{0}
+
+	\renewcommand{\specnote}{All models include a cubic polynomial of the logarithm of the wife's and the husband's annual income, an interaction between the wife's and the husband's logarithmic annual income, and dummies indicating if the income values for wife or husband have been imputed -- all at t$-1$.}
+
+	% Full sample, cubic income spec
+
+		% LFP
+		\xtfetable{Wife is employed in t}%
+		{f1yw_pc1_cciaimp_all_dspike}%
+		{\samplenote\,\specnote}
+
+		% FTPT
+		\xtfetable{Full-time share of wife's worked months in t}%
+		{f1ftpt_pc1_cciaimp_all_dspike}%
+		{\samplenote\,\specnote}
+
+		% VEBZT
+		\xtfetable{Wife's weekly working hours in t at time of interview}%
+		{vebzt_pc1_cciaimp_all_dspike}%
+		{\samplenote\,\specnote}
+
+
+	%\clearpage
+	\subsection{Different samples}
+	\setcounter{table}{0}
+	\setcounter{figure}{0}
+
+	\renewcommand{\specnote}{All models include a cubic polynomial of the logarithm of the wife's and the husband's annual income, an interaction between the wife's and the husband's annual log income, and the share of imputed income values for both wife and husband -- all at t$-1$.}
+
+
+	% Only individuals whose birth region is the same as the sample region
+
+		\renewcommand{\samplenote}{Additionally restricted to individuals whose birth region is the same as the sample region (East/West).}
+
+		% LFP
+		\xtfetable{Wife is employed in t\textemdash Birth region is sample region}%
+		{f1yw_pc1_cciaimp_nomov_dspike}%
+		{\samplenote\,\specnote}
+
+		% FTPT
+		\xtfetable{Full-time share of wife's worked months in t\textemdash Birth region is sample region}%
+		{f1ftpt_pc1_cciaimp_nomov_dspike}%
+		{\samplenote\,\specnote}
+
+		% VEBZT
+		\xtfetable{Wife's weekly working hours in t at time of interview\textemdash Birth region is sample region}%
+		{vebzt_pc1_cciaimp_nomov_dspike}%
+		{\samplenote\,\specnote}
+
+	% Without deletion of excess spike of equal earning couples
+
+		\renewcommand{\samplenote}{No dropping of observations to achieve the same share of equal earning couples as in the income tax data (see \ref{derounding}).}
+
+		% LFP
+		\xtfetable{Wife is employed in t\textemdash No deletion of excess spike of equal earning couples}%
+		{f1yw_pc1_cciaimp_all}%
+		{\samplenote\,\specnote}
+
+		% FTPT
+		\xtfetable{Full-time share of wife's worked months in t\textemdash No deletion of excess spike of equal earning couples}%
+		{f1ftpt_pc1_cciaimp_all}%
+		{\samplenote\,\specnote}
+
+		% VEBZT
+		\xtfetable{Wife's weekly working hours in t at time of interview\textemdash No deletion of excess spike of equal earning couples}%
+		{vebzt_pc1_cciaimp_all}%
+		{\samplenote\,\specnote}
+
+	\clearpage
+	\subsection{Different specifications}
+	\setcounter{table}{0}
+	\setcounter{figure}{0}
+
+		Within the regression model
+		$$
+		\begin{aligned}
+		LaborMarketOutcome_{it} &= \alpha_i + \beta_1 wifeEarnsMore_{i,t-1} + \beta_2 L_{i,t-1} + \beta_3 X_{it} + \epsilon_{it}
+		\end{aligned}
+		$$
+		we test different combinations of the lagged income control variables contained in $L_{i,t-1}$. The control vector $X_{it}$ always contains dummies for age groups of 5 years for both spouses, dummy variables for the age of the youngest child in the household, the district level unemployment rate at the month of the interview, and dummy variables for the survey year -- all at t. In Specification 5, $X_{it}$ a dummy indicating a person requiring care within the household.
+
+		\renewcommand{\samplenote}{}
+
+
+		% (2) Cubic, cubic
+		\subsubsection{Specification 1}
+
+		$L_{i,t-1}$ contains cubics of the logarithm of the wife's and the husband's annual income.
+
+		\renewcommand{\specnote}{All models include cubics of the logarithm of the wife's and the husband's annual income -- all at t$-1$.}
+
+		% LFP
+		\xtfetable{Wife is employed in t\textemdash Specification 1}%
+		{f1yw_pc1_cc_all_dspike}%
+		{\samplenote\,\specnote}
+
+		% FTPT
+		\xtfetable{Full-time share of wife's worked months in t\textemdash Specification 1}%
+		{f1ftpt_pc1_cc_all_dspike}%
+		{\samplenote\,\specnote}
+
+		% VEBZT
+		\xtfetable{Wife's weekly working hours in t at time of interview\textemdash Specification 1}%
+		{vebzt_pc1_cc_all_dspike}%
+		{\samplenote\,\specnote}
+
+
+		% (3) Total income + linear linear
+		\subsubsection{Specification 2}
+
+		$L_{i,t-1}$ contains the logarithm of the husband's and wife's annual income, and the logarithm of the sum of the husband's and wife's annual income. Our model is slightly different but this configuration mirrors the base specification for income controls used by \cite[p. 611]{bertrand2015gender}. However, we do not find it very sensible to include the logarithm of the sum of the husband's and wife's annual labor income because this term would be perfectly collinear with both constituents without the log transformation. It would be hard to say where the remaining variation for the modeled relationship comes from.
+
+		\renewcommand{\specnote}{All models include the logarithm of the husband's and wife's annual income, and the logarithm of the sum of the husband's and wife's annual income -- all at t$-1$.}
+
+		% LFP
+		\xtfetable{Wife is employed in t\textemdash Specification 2}%
+		{f1yw_pc1_llsum_all_dspike}%
+		{\samplenote\,\specnote}
+
+		% FTPT
+		\xtfetable{Full-time share of wife's worked months in t\textemdash Specification 2}%
+		{f1ftpt_pc1_llsum_all_dspike}%
+		{\samplenote\,\specnote}
+
+		% VEBZT
+		\xtfetable{Wife's weekly working hours in t at time of interview\textemdash Specification 2}%
+		{vebzt_pc1_llsum_all_dspike}%
+		{\samplenote\,\specnote}
+
+
+		% (6) Cubic, Cubic, Interaction, No imputation dummies for incom
+		\subsubsection{Specification 3}
+
+		$L_{i,t-1}$ contains a cubic polynomial of the logarithm of the wife's and the husband's annual income, and an interaction between the wife's and the husband's annual log income.
+
+		\renewcommand{\specnote}{All models include a cubic polynomial of the logarithm of the wife's and the husband's annual income, and an interaction between the wife's and the husband's annual log income -- all at t$-1$.}
+
+		% LFP
+		\xtfetable{Wife is employed in t\textemdash Specification 3}%
+		{f1yw_pc1_ccia_all_dspike}%
+		{\samplenote\,\specnote}
+
+		% FTPT
+		\xtfetable{Full-time share of wife's worked months in t\textemdash Specification 3}%
+		{f1ftpt_pc1_ccia_all_dspike}%
+		{\samplenote\,\specnote}
+
+		% VEBZT
+		\xtfetable{Wife's weekly working hours in t at time of interview\textemdash Specification 3}%
+		{vebzt_pc1_ccia_all_dspike}%
+		{\samplenote\,\specnote}
+
+
+		% (7) Cubic, Cubic, Interaction
+		\subsubsection{Specification 4}
+
+		$L_{i,t-1}$ contains a cubic polynomial of the logarithm of the wife's and the husband's annual income, an interaction between the wife's and the husband's annual log income, and the share of imputed income values for both wife and husband.
+		\textit{This is the main specification also shown in section \ref{mainspec}.}
+
+		\renewcommand{\specnote}{All models include a cubic polynomial of the logarithm of the wife's and the husband's annual income, an interaction between the wife's and the husband's annual log income, and the share of imputed income values for both wife and husband -- all at t$-1$.}
+
+		% LFP
+		\xtfetable{Wife is employed in t\textemdash Specification 4}%
+		{f1yw_pc1_cciaimp_all_dspike}%
+		{\samplenote\,\specnote}
+
+		% FTPT
+		\xtfetable{Full-time share of wife's worked months in t\textemdash Specification 4}%
+		{f1ftpt_pc1_cciaimp_all_dspike}%
+		{\samplenote\,\specnote}
+
+		% VEBZT
+		\xtfetable{Wife's weekly working hours in t at time of interview\textemdash Specification 4}%
+		{vebzt_pc1_cciaimp_all_dspike}%
+		{\samplenote\,\specnote}
+
+
+		% (8) Cubic, Cubic, Interaction + care control
+		\subsubsection{Specification 5}
+
+		$L_{i,t-1}$ contains a cubic polynomial of the logarithm of the wife's and the husband's annual income, an interaction between the wife's and the husband's annual log income, and the share of imputed income values for both wife and husband. Additionally, $X_it$ contains a dummy indicating if there is a person requiring care in the household.
+
+		\renewcommand{\specnote}{All models include a cubic polynomial of the logarithm of the wife's and the husband's annual income, an interaction between the wife's and the husband's annual log income, and the share of imputed income values for both wife and husband -- all at t$-1$.}
+
+		\renewcommand{\xtfenoteB}{All models include dummies for age groups of 5 years for both spouses, dummy variables for the age of the youngest child in the household, a dummy indicating a person requiring care in the household, the district level unemployment rate at the month of the interview, and dummy variables for the survey year -- all at t. Averaged over 25 simulation runs based on procedures described in the data section. Standard errors clustered on couple level in parentheses; *** p$<$0.001, ** p$<$0.01, * p$<$0.05, \dag\, p$<$0.1}
+
+		% LFP
+		\xtfetable{Wife is employed in t\textemdash Specification 5}%
+		{f1yw_pc1_cciaimpcare_all_dspike}%
+		{\samplenote\,\specnote}
+
+		% FTPT
+		\xtfetable{Full-time share of wife's worked months in t\textemdash Specification 5}%
+		{f1ftpt_pc1_cciaimpcare_all_dspike}%
+		{\samplenote\,\specnote}
+
+		% VEBZT
+		\xtfetable{Wife's weekly working hours in t at time of interview\textemdash Specification 5}%
+		{vebzt_pc1_cciaimpcare_all_dspike}%
+		{\samplenote\,\specnote}
+
+
+	\clearpage
+	\subsection{Dynamic panel model estimates}
+	\setcounter{table}{0}
+	\setcounter{figure}{0}
+
+	% Table command
+	\newcommand{\ldsvtable}[3]{
+		\begin{table}[H]
+			\begin{center}
+				\begin{scriptsize}
+					\vspace*{3mm}
+					\captionof{table}{#1}
+					\sisetup{
+						table-column-width = 1.6cm,
+						table-text-alignment=center,
+						table-number-alignment=center,
+						table-unit-alignment=center,
+						table-figures-integer = 1,
+						table-figures-decimal=3,
+						input-decimal-markers =	.	,
+						input-symbols = , ,
+						table-align-text-post = false,
+						group-separator={,},
+						group-minimum-digits={3},
+						output-decimal-marker={.},
+						table-space-text-post = \sym{***},
+						table-space-text-post = \sym{\dag},
+						table-space-text-pre = {(},
+						table-space-text-post = {)}
+					}
+					\noindent
+					\strutlongstacks{T}
+					{\renewcommand{\arraystretch}{1.2}
+						\begin{tabularx} {\textwidth} {@{} X S[table-align-text-post=false] S S S S S S @{}}
+							\midrule
+							\input{../tables/#2.tex}
+							\midrule
+						\end{tabularx}
+					}
+					\captionsetup{
+						justification=justified,
+						textfont={footnotesize, normalfont},
+					}
+					\caption*{\scriptsize{\xtfenoteA\,#3\,\xtfenoteB}}
+				\end{scriptsize}
+				\normalsize
+			\end{center}
+		\end{table}
+	}
+
+		In earlier versions of this paper, we estimated the specification
+		$$
+		\begin{aligned}
+		wifeEarnsMore_{it} &= \alpha_i + \beta_1 wifeEarnsMore_{i,t-1} + \beta_2 L_{i,t-1} + \beta_3 X_{it} + \epsilon_{it} \quad.
+		\end{aligned}
+		$$
+		However, our results turned out to be very instable and sensitive to analysis period adjustments, suggesting dynamic panel bias \cite[see][for a detailed account]{roodman2009how}. Here we test different models to investigate this possible issue. We implement the Arellano-Bond estimator (difference GMM), the Blundell-Bond estimator (system GMM) and a Least Squares Dummy Variable estimator with bias correction (LSDVC) as proposed by \cite{bruno2005estimation}.
+
+		Dynamic panel bias arises in autoregressive fixed effects models of the form $y_{it} = \rho y_{i,t-1} + \alpha_i + \epsilon_{it}$ because $y_{i,t-1}$ is correlated with the fixed effect $\alpha_i$, making the FE estimator inconsistent. Variation in $y_{it}$ due to the fixed effect might then be incorrenctly attributed as explanatory power to $y_{i,t-1}$, inflating $\rho$.
+
+		We test the stability of coefficient estimates for $wifeEarnsMore_{i,t-1}$ using a set of theoretically appropriate models. In practice, however, both GMM models are prone to misspecification and it is hard to say whether specific covariates are, for example, strictly exogenous or not regarding the error term. We therefore also present the estimates of a different approach (LSDVC), where the standard within-transformed regression estimates are bias corrected un to $O(1/T)$. Tables D.25 and D.26 provide the respective results.
+
+		Apparently, our FE estimates do suffer from dynamic panel bias as they are, for the most part, substantially different from the AB, BB, and LSDVC estimates. However, the dynamic panel model results are also very heterogenous across estimators. Although AB, BB, and LSDVC coefficients lie within the bounds of OLS and FE estimates, there is no clear pattern either in coefficient size nor significance that would allow any substantive interpretation. The LSDVC estimates seem interesting, as they more generally reflect what we also directly observe in the data: For a wife who out-earns her husbands in t$-1$, this out-earning is associated with an increase in her probability to do so in $t$. While this general positive association is not surprising, the respective probability increase differs between West and East Germany and analysis periods, showing a similar trend as the rest of our estimates.
+
+		Nonetheless, the instability of estimates leaves us no other choice than to exclude this regression result. A thorough methodological investigation would make for another paper. Consequently, we can no longer estimate a `gross effect' of a wife's out-earning of her husband on her out-earning probability in the subsequent year. However, looking at the effects on specific outcomes like the wife's labor force participation or working hours arrangements is still possible as these panel models are not dynamic ($wifeEarnsMore$ is only used as independent variable).
+
+		\renewcommand{\samplenote}{}
+
+		\renewcommand{\specnote}{}
+
+		\renewcommand{\xtfenoteA}{Notes: Unweighted regressions. Main specification, see regression notes above. All regressions except OLS with couple-fixed effects. AB denotes the Arellano-Bond estimator (difference GMM), implemented via \textit{xtabond2} by \cite{roodman2009how}. $L_{i,t-1}$ treated as (1) exogenous (independent of past and future errors), (2) predetermined (independent from contemporaneous and future errors, lags 1 and up used as instruments), (3) endogenous (possibly correlated with past, contemporaneous and future errors, lags 2 and up used as instruments). $wifeEarnsMore_{i,t-1}$ always treated as endogenous, $X_{it}$ always treated as exogenous. Instrument matrix collapsed (one column per time period and variable).}
+
+		\renewcommand{\xtfenoteB}{Sample size before transformations (is smaller for AB). Forward orthogonal-deviations transformation used to account for gaps in panel. Standard errors clustered on couple level in parentheses. AB standard errors based on two-step VCE with Windmeijer correction. *** p$<$0.001, ** p$<$0.01, * p$<$0.05, \dag\, p$<$0.1}
+
+		% AB
+		\ldsvtable{Wife earns more in t\textemdash Model comparison OLS, FE, AB}%
+		{lsdv_ab}%
+		{\samplenote\,\specnote}
+
+		\renewcommand{\xtfenoteA}{Notes: Unweighted regressions. Main specification, see regression notes above. All regressions except OLS with couple-fixed effects. BB denotes the Blundell-Bond estimator (system GMM), implemented via \textit{xtabond2} by \cite{roodman2009how}. $L_{i,t-1}$ treated as (1) exogenous (independent of past and future errors), (2) predetermined (independent from contemporaneous and future errors, lags 1 and up used as instruments), (3) endogenous (possibly correlated with past, contemporaneous and future errors, lags 2 and up used as instruments). $wifeEarnsMore_{i,t-1}$ always treated as endogenous, $X_{it}$ always treated as exogenous. Instrument matrix collapsed (one column per time period and variable). LSDVC bias correction up to $O(1/T)$, initalized via Anderson-Hsiao estimator, implemented via \textit{xtldsvc} by \cite{bruno2005estimation}.}
+
+		\renewcommand{\xtfenoteB}{Sample size before transformations. Forward orthogonal-deviations transformation used to account for gaps in panel in BB estimations. Standard errors clustered on couple level in parentheses. BB standard errors based on two-step VCE with Windmeijer correction. Standard errors bootstrapped for the LSDV estimates (10 runs). *** p$<$0.001, ** p$<$0.01, * p$<$0.05, \dag\, p$<$0.1}
+
+		% BB
+		\ldsvtable{Wife earns more in t\textemdash Model comparison OLS, FE, BB, LSDVC}%
+		{lsdv_bb}%
+		{\samplenote\,\specnote}
+
+
+	% Additional references
+	\clearpage
+	\pagestyle{plain}
+	\bibliographystyle{apalike}
+	\bibliography{gi}
+	\clearpage
+
+\end{appendix}
+
+
+
+\end{document}
