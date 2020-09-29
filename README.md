@@ -15,8 +15,8 @@ in West and East Germany between 1983 and 2016' by [Maximilian Sprengholz](mailt
 │   ├── source         <- Open source data (provided); processed closed source data (not provided)
 │   └── temp           <- Intermediate data that has been transformed.
 ├── do                 <- Source code
-├── graphs             <- Altered external Stata programs
-├── tables             <- Source code
+├── graphs             <- Figures
+├── tables             <- Tables
 └── docs               <- LaTeX source and output to reproduce paper results and appendix
 
 ```
@@ -24,10 +24,10 @@ in West and East Germany between 1983 and 2016' by [Maximilian Sprengholz](mailt
 ## Data requirements
 
 ### SOEP
-The main data used in this project is the Socio-Economic Panel v33.1, [doi:10.5684/soep.v33.1](https://doi:10.5684/soep.v33.1). The SOEP data is free of charge but has to be requested according to the following [conditions](https://www.diw.de/en/diw_02.c.242211.en/criteria_fdz_soep.html). You have to have access to the WIDE and LONG standard files in order to run the code. Moreover, you need to have access to regional data (Kreiskennzahlen) in order to merge the county-level unemployment data (see below). Ususally, the access to regional data is only granted on-site.
+The main data used in this project is the Socio-Economic Panel v33.1, [doi:10.5684/soep.v33.1](https://doi:10.5684/soep.v33.1). The SOEP data is free of charge but has to be requested according to the following [conditions](https://www.diw.de/en/diw_02.c.242211.en/criteria_fdz_soep.html). You have to have access to the WIDE and LONG standard files in order to run the code. Moreover, you need to have access to regional data (Kreiskennzahlen) in order to merge the county-level unemployment data (see below). The access to regional data is typically only granted on-site.
 
 ### FAST
-To address income heaping in the SOEP data, we also use administrative income data (FAST) from 2010, [doi:10.21242/73111.2010.00.00.3.1.0](https://doi:10.21242/73111.2010.00.00.3.1.0). This data can be requested [here](https://www.forschungsdatenzentrum.de/de/zugang).
+To address income heaping in the SOEP data, we also use administrative income data (FAST) from 2010, [doi:10.21242/73111.2010.00.00.3.1.0](https://doi:10.21242/73111.2010.00.00.3.1.0). This data is not free of charge and can be requested [here](https://www.forschungsdatenzentrum.de/de/zugang).
 
 ### County-level unemployment data
 Monthly values have been collected and processed manually based on spredsheets provided by the [Bundesagentur für Arbeit (BA)](https://statistik.arbeitsagentur.de/). These files are provided in this repository.
@@ -37,7 +37,7 @@ We use the openly available WVS waves [1995-1998](http://www.worldvaluessurvey.o
 
 ## Software requirements
 
-This project was implemented in [Stata 15.1](https://www.stata.com/), but should run in version 14, too. You find the master file under `do/gi_master.do`.
+This project was implemented in [Stata 15.1](https://www.stata.com/), but should run in version 14 too. You find the master file under `do/gi_master.do`.
 
 The following user-written programs need to be installed in order to run the full code (see installation instructions in the linked documentations):
 
