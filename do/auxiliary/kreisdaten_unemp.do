@@ -94,4 +94,5 @@ set more off
 	save "${dir_data}source/unemp_84_2016l.dta", replace
 
 // clear temp
-!rmdir ${dir_data}temp  /s /q
+erase "${dir_data}source/temp/unemp_84_2016.dta"
+erase "${dir_data}source/temp/unemp_91_96_bula.dta"
