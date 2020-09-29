@@ -671,6 +671,4 @@ xtset cid syear
 *** save	
 	label data "Dataset Gender Identity, generated"
 	save  "${dir_data}gi_gen.dta", replace
-
 	clear all
-	log close

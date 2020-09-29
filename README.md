@@ -1,27 +1,7 @@
 # Gender Identity in West and East Germany
 
 Open Materials for the paper: 'Gender identity and wives’ labor market outcomes
-in West and East Germany between 1983 and 2016' by [Maximilian Sprengholz](mailto:maximilian.sprengholz@hu-berlin.de), Anna Wieber, and Elke Holst, Socio-Economic Review, https://doi.org/10.1093/ser/mwaa048.
-
-
-To make this code work...
-
-...you need the following data:
-
-- Access to the SOEP v33.1 (wide AND long)
-- Access to the SOEP v33.1 regional data (district level)
-- Access to the FAST income tax data of 2010
-
-...you need the following Stata software:
-
-- DCdensity.ado (Altered version of the Justin McCrary (https://eml.berkeley.edu/~jmccrary/DCdensity/) version to enable graphing options, provided in the ado dir)
-- frmttable (by John Gallup, part of outreg (https://econpapers.repec.org/software/bocbocode/s375201.htm), modified version provided in the .ado dir)
-- grstyle (by Ben Jann, http://repec.sowi.unibe.ch/stata/grstyle/index.html)
-- Only for appendix: xtabond2 (by David Roodman, http://www.stata-journal.com/article.html?article=st0159)
-- Only for appendix: xtlsdvc (by Giovanni Bruno, https://journals.sagepub.com/doi/10.1177/1536867X0500500401)
-- Only for appendix: estout (by Ben Jann, http://repec.sowi.unibe.ch/stata/estout/index.html)
-
-...please use the provided repository structure as is and edit the macros below.
+in West and East Germany between 1983 and 2016' by [Maximilian Sprengholz](mailto:maximilian.sprengholz@hu-berlin.de), Anna Wieber, and Elke Holst, _Socio-Economic Review_, https://doi.org/10.1093/ser/mwaa048.
 
 ## Project organization
 
@@ -41,32 +21,41 @@ To make this code work...
 
 ```
 
-## Data
-The main data used in this project are the Scientific Use Files (SUFs) 1976-2015 of the German Microsensus
-(DOI: [10.21242/12211.1976.00.00.3.1.0](https://doi.org/10.21242/12211.1976.00.00.3.1.0) to [10.21242/12211.2015.00.00.3.1.0](https://doi.org/10.21242/12211.2015.00.00.3.1.0)). These files are not openly accessible and have to be [requested](https://www.forschungsdatenzentrum.de/en/request).
+## Data requirements
 
-All other data used is part of this repository.
+### SOEP
+The main data used in this project is the Socio-Economic Panel v33.1, [doi:10.5684/soep.v33.1](https://doi:10.5684/soep.v33.1). The SOEP data is free of charge but has to be requested according to the following [conditions](https://www.diw.de/en/diw_02.c.242211.en/criteria_fdz_soep.html). You have to have access to the WIDE and LONG standard files in order to run the code. Moreover, you need to have access to regional data (Kreiskennzahlen) in order to merge the county-level unemployment data (see below). Ususally, the access to regional data is only granted on-site.
 
-## Software
+### FAST
+To address income heaping in the SOEP data, we also use administrative income data (FAST) from 2010, [doi:10.21242/73111.2010.00.00.3.1.0](https://doi:10.21242/73111.2010.00.00.3.1.0). This data can be requested [here](https://www.forschungsdatenzentrum.de/de/zugang).
 
-This project was implemented in [Stata 15.1](https://www.stata.com/), but should run in older versions, too. You find the master file under `src/mz_o_00_master.do`.
+### County-level unemployment data
+Monthly values have been collected and processed manually based on spredsheets provided by the [Bundesagentur für Arbeit (BA)](https://statistik.arbeitsagentur.de/). These files are provided in this repository.
+
+### WVS
+We use the openly available WVS waves [1995-1998](http://www.worldvaluessurvey.org/WVSDocumentationWV3.jsp) and [2010-2014](http://www.worldvaluessurvey.org/WVSDocumentationWV6.jsp) to compare agreement to the statement 'If a woman earns more money than her husband, it's almost certain to cause problems.'
+
+## Software requirements
+
+This project was implemented in [Stata 15.1](https://www.stata.com/), but should run in version 14, too. You find the master file under `do/gi_master.do`.
 
 The following user-written programs need to be installed in order to run the full code (see installation instructions in the linked documentations):
 
-- [grstyle](http://repec.sowi.unibe.ch/stata/grstyle/index.html). Jann, B. (2018) ‘Customizing Stata Graphs Made Easy (Part 1)’, The Stata Journal: Promoting communications on statistics and Stata, 18, 491–502.
-- [tabout v3](http://tabout.net.au/). Watson, I. (2019).
+- [grstyle](http://repec.sowi.unibe.ch/stata/grstyle/index.html): Jann, B. (2018) ‘Customizing Stata Graphs Made Easy (Part 1)’, The Stata Journal: Promoting communications on statistics and Stata, 18, 491–502.
+- Only for appendix: [estout](http://repec.sowi.unibe.ch/stata/estout/index.html): Jann, B. (2007) ‘Making Regression Tables Simplified’, The Stata Journal: Promoting communications on statistics and Stata, 7, 227–244.
+- Only for appendix: [xtabond2](http://www.stata-journal.com/article.html?article=st0159): Roodman, D. (2009) ‘How to Do Xtabond2: An Introduction to Difference and System GMM in Stata’, Stata Journal, 9, 86–136.
+- Only for appendix: [xtlsdvc](https://journals.sagepub.com/doi/10.1177/1536867X0500500401): Bruno, G. S. (2005) ‘Estimation and Inference in Dynamic Unbalanced Panel-Data Models with a Small Number of Individuals’, The Stata Journal, 5, 473–500.
 
-Further external code used:
 
-- [isei_mz_96-04.do](https://www.gesis.org/missy/files/documents/MZ/isei/isei_mz_96-04.do). Kogan, I. and Schimpl-Neimanns, B. (2006) Recodierung von ISEI auf Basis von ISCO-88 (COM). German Microdata Lab (GML), Mannheim
-- [Programme zur Umsetzung der Bildungsklassifikation ISCED-1997](https://www.gesis.org/missy/materials/MZ/tools/isced), German Microdata Lab (GML), Mannheim. Used for years 1976-2013, source files under `bin/external`.
+The following user-written programs have been altered to serve the present purpose; the .ado files are provided in the `ado` dir:
 
-The online appendix/documentation was created in [Atom](https://github.com/atom/atom) with [Markdown Preview Enhanced](https://github.com/shd101wyy/markdown-preview-enhanced), [Pandoc](https://github.com/jgm/pandoc) and [pandoc-crossref](https://github.com/lierdakil/pandoc-crossref).
+- [DCdensity](https://eml.berkeley.edu/~jmccrary/DCdensity/): McCrary, J. (2008) ‘Manipulation of the Running Variable in the Regression Discontinuity Design: A Density Test’, Journal of Econometrics, 142, 698–714.
+- [frmttable](https://econpapers.repec.org/software/bocbocode/s375201.htm): Gallup, J. L. (2012) ‘A Programmer’s Command to Build Formatted Statistical Tables’, Stata Journal, 12, 655–673.
 
 
 ## License
 
-This project is licensed under the terms of the [MIT License](/LICENSE.md)
+This project is licensed under the terms of the [MIT License](/LICENSE.md).
 
 ## Citation
 

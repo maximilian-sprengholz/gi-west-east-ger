@@ -66,9 +66,19 @@ global dir_t "${wd}tables/" // tables
 //     		  PREP	  	  	   //
 //-----------------------------//
 
-//do ${dir_do}gi_fetch.do  // fetch wide data 1984-2016 //
-//do ${dir_do}auxiliary/kreisdaten_unemp.do // county unemployment rates
-//do ${dir_do}gi_gen.do  // generate dataset
+// WVS
+do ${dir_do}gi_wvs.do // compare breadwinner attitudes between West and East
+
+// FAST
+do ${dir_do}gi_fast_gen.do // extract relevant parts of dataset
+do ${dir_do}gi_fast_export.do // export shares of rounded values
+
+// SOEP
+do ${dir_do}gi_fetch.do  // fetch wide data 1984-2016 //
+do ${dir_do}auxiliary/kreisdaten_unemp.do // county unemployment rates
+do ${dir_do}gi_gen.do  // generate dataset
+
+// Descriptives
 do ${dir_do}gi_sumstats.do  // summary statistics
 do ${dir_do}gi_sumstats_appendix.do  // summary statistics
 
@@ -105,7 +115,6 @@ do ${dir_do}gi_rdcd_post_prog.do // define monte carlo simulation for dcd
 rdcdpost, dv(wis) percut(1) samp(1) sel(random) cutoff(0.50001) binsize(0.05) reps(100) delspike graph
 
 // Robustness checks (sample, binsize, no spike deletion) 
-/*
 rdcdpost, dv(wis) percut(1) samp(0) sel(random) cutoff(0.50001) binsize(0.05) reps(100) delspike // including cohabiting couples
 rdcdpost, dv(wis) percut(1) samp(3) sel(random) cutoff(0.50001) binsize(0.05) reps(100) delspike // no movers
 rdcdpost, dv(wis) percut(1) samp(1) sel(random) cutoff(0.50001) binsize(0.05) reps(100) // w/o deletion of excess
@@ -113,7 +122,6 @@ rdcdpost, dv(wis) percut(1) samp(1) sel(random) cutoff(0.50001) binsize(0.02) re
 rdcdpost, dv(wis) percut(1) samp(1) sel(random) cutoff(0.50001) binsize(0.01) reps(100) delspike // binsize 0.01
 rdcdpost, dv(wis) percut(1) samp(1) sel(median) cutoff(0.50001) binsize(0.05) reps(100) delspike // other selection of couple obs.
 rdcdpost, dv(wis) percut(1) samp(1) sel(nosel)  cutoff(0.50001) binsize(0.05) reps(100) delspike // other selection of couple obs.
-*/
 
 // Graphing of main spec according to SER styleguide
 do "${dir_do}gi_rdcd_graphing_SER.do"
@@ -150,11 +158,11 @@ local dv f1yw
 local iv WEM
 local reps 100
 local pc 1
-//	spec
+// spec
 forvalues s=1/5 {
 	rxtfepost, dv(`dv') iv(`iv') spec(`s') percut(`pc') samp(1) reps(`reps') delspike
 }
-//	sample
+// sample
 rxtfepost, dv(`dv') iv(`iv') spec(7) percut(`pc') samp(3) reps(`reps') delspike // no movers
 rxtfepost, dv(`dv') iv(`iv') spec(7) percut(`pc') samp(1) reps(`reps') // no delspike
 
@@ -166,11 +174,11 @@ local dv f1ftpt // share of full time vs. non-full time
 local iv WEM
 local reps 100
 local pc 1
-//	spec
+// spec
 forvalues s=1/5 {
 	rxtfepost, dv(`dv') iv(`iv') spec(`s') percut(`pc') samp(1) reps(`reps') delspike
 }
-//	sample
+// sample
 rxtfepost, dv(`dv') iv(`iv') spec(7) percut(`pc') samp(3) reps(`reps') delspike // no movers
 rxtfepost, dv(`dv') iv(`iv') spec(7) percut(`pc') samp(1) reps(`reps') // no delspike
 
@@ -182,11 +190,11 @@ local dv vebzt // contractual hours at interview
 local iv WEM
 local reps 100
 local pc 1
-//	spec
+// spec
 forvalues s=1/5 {
 	rxtfepost, dv(`dv') iv(`iv') spec(`s') percut(`pc') samp(1) reps(`reps') delspike
 }
-//	sample
+// sample
 rxtfepost, dv(`dv') iv(`iv') spec(7) percut(`pc') samp(3) reps(`reps') delspike // no movers
 rxtfepost, dv(`dv') iv(`iv') spec(7) percut(`pc') samp(1) reps(`reps') // no delspike
 
@@ -197,5 +205,6 @@ rxtfepost, dv(`dv') iv(`iv') spec(7) percut(`pc') samp(1) reps(`reps') // no del
 
 do "${dir_do}gi_dpd.do"
 
-log close
+
+// log close
 exit
