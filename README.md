@@ -1,7 +1,6 @@
-# Gender Identity in West and East Germany
+# Open materials: Gender identity and wives’ labor market outcomes in West and East Germany between 1983 and 2016
 
-Open Materials for the paper: 'Gender identity and wives’ labor market outcomes
-in West and East Germany between 1983 and 2016' by [Maximilian Sprengholz](mailto:maximilian.sprengholz@hu-berlin.de), Anna Wieber, and Elke Holst, _Socio-Economic Review_, https://doi.org/10.1093/ser/mwaa048.
+Open materials to reproduce the results of the article 'Gender identity and wives’ labor market outcomes in West and East Germany between 1983 and 2016' by [Maximilian Sprengholz](mailto:maximilian.sprengholz@hu-berlin.de), Anna Wieber, and Elke Holst, _Socio-Economic Review_, [https://doi.org/10.1093/ser/mwaa048](https://doi.org/10.1093/ser/mwaa048). Please note that additional external (closed) data is required as well as additional (closed and open source) software (see below).
 
 ## Project organization
 
@@ -55,8 +54,10 @@ The following user-written programs have been altered to serve the present purpo
 
 ## License
 
-This project is licensed under the terms of the [MIT License](/LICENSE.md). Reproduced content from the published [article](https://doi.org/10.1093/ser/mwaa048) is subject to the copyright noted therein.
+This software is licensed under the terms of the [MIT License](/LICENSE.md). Reproduced content from the published [article](https://doi.org/10.1093/ser/mwaa048) is subject to the copyright noted therein.
 
 ## Citation
 
-Please [cite this project as described here](/CITATION.md).
+Please cite this software as:
+
+Sprengholz, M., Wieber, A., Holst, E. (2020) 'Open materials: Gender identity and wives’ labor market outcomes in West and East Germany between 1983 and 2016', Zenodo, [https://doi.org/10.5281/zenodo.4058741](https://doi.org/10.5281/zenodo.4058741).
